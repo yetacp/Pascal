@@ -787,7 +787,7 @@ $PRV0010 ENT P,2,L1  WRITEHEXBYTE        ,TFFFF,2,10,,        ,120
  DVI
  CHK J,0,15
  IXA 1
- IND C,0                     ;  Å                  
+ IND C,0                     ;  ÔøΩ                  
  LDC I,1
  CSP WRC,136
  LCA M,16,'0123456789abcdef'
@@ -796,7 +796,7 @@ $PRV0010 ENT P,2,L1  WRITEHEXBYTE        ,TFFFF,2,10,,        ,120
  MOD
  CHK J,0,15
  IXA 1
- IND C,0                     ;  Å                  
+ IND C,0                     ;  ÔøΩ                  
  LDC I,1
  CSP WRC,136
  CSP EIO,136
@@ -3219,7 +3219,7 @@ L15 LAB
  CHK J,1,254
  DEC I,1
  IXA 1
- IND C,0                     ;  Å                  
+ IND C,0                     ;  ÔøΩ                  
  LDC C,'''
  EQU C
  FJP L18
@@ -4148,7 +4148,7 @@ L23 LAB
  FJP L24
  LOC 1617
  LCA P,$PASMAI#
- INC A,2762                  ;  Å                  
+ INC A,2762                  ;  ÔøΩ                  
  LOD I,2,124                 ; K                   
  CHK J,1,12
  DEC I,1
@@ -4163,7 +4163,7 @@ L23 LAB
  CHK J,1,12
  DEC I,1
  IXA 2
- IND H,0                     ;  Å                  
+ IND H,0                     ;  ÔøΩ                  
  LDC I,1
  SBI
  STR I,2,432
@@ -4260,7 +4260,7 @@ L30 LAB
  CHK J,1,254
  DEC I,1
  IXA 1
- IND C,0                     ;  Å                  
+ IND C,0                     ;  ÔøΩ                  
  ORD
  LOC 1643
  STR I,1,1368
@@ -4356,7 +4356,7 @@ L36 LAB
  CHK J,1,254
  DEC I,1
  IXA 1
- IND C,0                     ;  Å                  
+ IND C,0                     ;  ÔøΩ                  
  ORD
  LOC 1677
  STR I,1,1368
@@ -4455,7 +4455,7 @@ L42 LAB
  CHK J,1,254
  DEC I,1
  IXA 1
- IND C,0                     ;  Å                  
+ IND C,0                     ;  ÔøΩ                  
  ORD
  LOC 1712
  STR I,1,1368
@@ -4541,7 +4541,7 @@ L49 LAB
  CHK J,1,40
  DEC I,1
  IXA 1
- IND C,0                     ;  Å                  
+ IND C,0                     ;  ÔøΩ                  
  LDC C,'X'
  EQU C
  LDA 2,128                   ; DIGIT               
@@ -4549,7 +4549,7 @@ L49 LAB
  CHK J,1,40
  DEC I,1
  IXA 1
- IND C,0                     ;  Å                  
+ IND C,0                     ;  ÔøΩ                  
  LDC C,'x'
  EQU C
  IOR B
@@ -4727,7 +4727,7 @@ L50 LAB
  CHK J,1,40
  DEC I,1
  IXA 1
- IND C,0                     ;  Å                  
+ IND C,0                     ;  ÔøΩ                  
  LDC C,'B'
  EQU C
  LDA 2,128                   ; DIGIT               
@@ -4735,7 +4735,7 @@ L50 LAB
  CHK J,1,40
  DEC I,1
  IXA 1
- IND C,0                     ;  Å                  
+ IND C,0                     ;  ÔøΩ                  
  LDC C,'b'
  EQU C
  IOR B
@@ -4949,7 +4949,7 @@ L92 LAB
  DEC I,1
  IXA 1
  LOC 1830
- IND C,0                     ;  Å                  
+ IND C,0                     ;  ÔøΩ                  
  CHK I,0,255
  STO C
  LOD I,2,120                 ; I                   

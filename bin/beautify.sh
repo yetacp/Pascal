@@ -5,8 +5,8 @@ env DD_EINGABE=$1.bak \
     DD_AUSGABE=$1.pas \
     DD_LISTING=$1.lis \
     pcint \
-    pcode=pasform.pcode \
+    pcode=beautify.pcode \
     inc=paslibx,passcan \
-    pas=pasform.pas \
-    out=pasform.lis \
+    pas=beautify.pas \
+    out=beautify.lis \
     debug=n
