@@ -18,24 +18,7 @@ http://bernd-oppolzer.de/job9.htm
 or the New Stanford Pascal compiler Facebook page:
 https://www.facebook.com/StanfordPascal/
 
---------------------------------------------------------------
 
-Windows users:
-
-There will be installation scripts and helpfiles in the near future.
-
-For the moment:
-
-The P-Code interpreter PCINT is located in the bin subdirectory.
-The compiler files (Pascal and P-Code) are in the src subdirectory.
-The message repository is in the etc subdirectory.
-
-If you combine these directories, you have all you need to run
-the compiler. PASCAL.CMD in subdirectory script will run the
-compiler, and PRUN.CMD in the same subdirectory will run your
-compiled P-Code files.
-
---------------------------------------------------------------
 
 Unix and Linux (and other systems) users:
 
@@ -49,5 +32,26 @@ After that, use the same subdirectories as the Windows users.
 Script pp in subdirectory script_ix shows how to call the compiler,
 and script prun calls the compiled P-Code files.
 
-Have fun :-)
+Stanford Pascal Files
 
+PASCOMP  EXEC      A1  - new Compiler EXEC
+PASFORM  EXEC      A1  - Pascal Formatter
+PASLINK  EXEC      A1  - Pascal Linker
+PASRUN   EXEC      A1  - Pascal Run EXEC
+PASRUNC  EXEC      A1  - Pascal Run EXEC for the compiler
+PASRUNS  EXEC      A1  - PASRUN, but with standard allocations
+PASC370  EXEC      A1  - EXEC to run the PCODE to 370 translator
+PASCAL   EXEC      A1  - total Compiler and PCODE translator EXEC
+PASCAL   MESSAGES  A1  - Repository for error messages
+XRUNPARM MODULE    A1  - CMS startup code for OS modules
+PASCAL1  TEXT      A1  - Compiler
+PASCAL2  TEXT      A1  - PCODE-Translator
+PASFORM  TEXT      A1  - Pascal Formatter
+PASLIBX  TEXT      A1  - Runtime library Pascal part
+PASMAIN  TEXT      A1  - Runtime library Main program entry
+PASMONN  TEXT      A1  - Runtime library Pascal monitor
+PASSCAN  TEXT      A1  - Pascal compiler symbol scanner
+PASSNAPC TEXT      A1  - Pascal SNAPSHOT for CMS
+PASUTILS TEXT      A1  - Runtime library utility functions
+XRUNPARM TEXT      A1  - CMS startup code (object version)
+PASMATH  TXTLIB    A2  - Runtime library Fortran math lib

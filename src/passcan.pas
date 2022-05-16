@@ -40,11 +40,8 @@ module PASSCAN ;
 (*                                                                  *)
 (********************************************************************)
 
-
-
 const MAXLSIZE = 120 ;
       MAXERRNO = 999 ;
-
 
 type CHARPTR = -> CHAR ;
 
@@ -189,14 +186,12 @@ type CHARPTR = -> CHAR ;
                       CTROPTION : BOOLEAN ;  // show counters
                     end ;
 
-
 const C_ZIFFER : SCAN_SETCHAR =
       [ '0' .. '9' ] ;
       C_BUCHST : SCAN_SETCHAR =
       [ 'A' .. 'I' , 'J' .. 'R' , 'S' .. 'Z' ] ;
       C_KLBUCHST : SCAN_SETCHAR =
       [ 'a' .. 'i' , 'j' .. 'r' , 's' .. 'z' ] ;
-
 
 static SCANNER_INIT : INTEGER ;
        SCAN_CODE : SCAN_CODETAB ;
@@ -206,9 +201,6 @@ static SCANNER_INIT : INTEGER ;
        /* des Scanners umgebungsabhaengig korrekt    */
        /* gefuellt                                   */
        /**********************************************/
-
-
-
 
 local procedure WRITEPTR_LEN ( var F : TEXT ; CPSTART : VOIDPTR ; LEN :
                              INTEGER ; TRIM_LEFT : BOOLEAN ; TRIM_RIGHT
@@ -248,8 +240,6 @@ local procedure WRITEPTR_LEN ( var F : TEXT ; CPSTART : VOIDPTR ; LEN :
          CP := PTRADD ( CP , 1 ) ;
        end (* for *) ;
    end (* WRITEPTR_LEN *) ;
-
-
 
 local procedure INIT_SCAN_CODE ;
 
@@ -311,8 +301,6 @@ local procedure INIT_SCAN_CODE ;
          SCAN_CODE [ C ] := CHR ( EBCDIC_TO_ASCII [ C ] )
    end (* INIT_SCAN_CODE *) ;
 
-
-
 local procedure SCALE_LINE ( var SCANOUT : TEXT ; var SCB : SCAN_BLOCK
                            ) ;
 
@@ -323,8 +311,6 @@ local procedure SCALE_LINE ( var SCANOUT : TEXT ; var SCB : SCAN_BLOCK
      WRITELN ( SCANOUT , '....5...10....5...20....5...30....5'
                '...40....5...50....5...60....5...70..' ) ;
    end (* SCALE_LINE *) ;
-
-
 
 local procedure CHECK_HEADING ( var SCANOUT : TEXT ; var SCB :
                               SCAN_BLOCK ) ;
@@ -346,8 +332,6 @@ local procedure CHECK_HEADING ( var SCANOUT : TEXT ; var SCB :
          SCB . LINECOUNT := 3 ;
        end (* then *) ;
    end (* CHECK_HEADING *) ;
-
-
 
 local procedure SCAN_FEHLER_AUSGEBEN ( var SCANOUT : TEXT ; var SCB :
                                      SCAN_BLOCK ; FELAUF : SCANF_PTR )
@@ -478,8 +462,6 @@ local procedure SCAN_FEHLER_AUSGEBEN ( var SCANOUT : TEXT ; var SCB :
      WRITELN ( SCANOUT , '*** no msg text found ***' ) ;
    end (* SCAN_FEHLER_AUSGEBEN *) ;
 
-
-
 local procedure PROT_ZEILE_AUSG ( var SCANOUT : TEXT ; var SCB :
                                 SCAN_BLOCK ; ALLES : BOOLEAN ; ISTERM :
                                 BOOLEAN ) ;
@@ -598,8 +580,6 @@ local procedure PROT_ZEILE_AUSG ( var SCANOUT : TEXT ; var SCB :
        end (* then *)
    end (* PROT_ZEILE_AUSG *) ;
 
-
-
 procedure PASSCANS ( var SCANOUT : TEXT ; var SCB : SCAN_BLOCK ) ;
 
 (************************************************)
@@ -607,7 +587,6 @@ procedure PASSCANS ( var SCANOUT : TEXT ; var SCB : SCAN_BLOCK ) ;
 (*   Summary ausgeben                           *)
 (*                                              *)
 (************************************************)
-
 
    var ERSTAUSG : BOOLEAN ;
        SCALE : INTEGER ;
@@ -670,8 +649,6 @@ procedure PASSCANS ( var SCANOUT : TEXT ; var SCB : SCAN_BLOCK ) ;
        end (* else *) ;
    end (* PASSCANS *) ;
 
-
-
 procedure PASSCANL ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB
                    : SCAN_BLOCK ; ALLES : BOOLEAN ) ;
 
@@ -690,7 +667,6 @@ procedure PASSCANL ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB
 (*   ohne Fehler ausgegeben werden sollen       *)
 (*                                              *)
 (************************************************)
-
 
    var PO : OPTIONS_PTR ;
 
@@ -713,8 +689,6 @@ procedure PASSCANL ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB
      PASSCANS ( SCANOUT , SCB ) ;
    end (* PASSCANL *) ;
 
-
-
 function PASSCANE ( var SCB : SCAN_BLOCK ; ERRLEVEL : CHAR ; ERRCLASS :
                   CHAR ; I : INTEGER ; INFO : CHAR64 ; ZEILNR : INTEGER
                   ; PLATZ : INTEGER ) : SCANF_PTR ;
@@ -730,7 +704,6 @@ function PASSCANE ( var SCB : SCAN_BLOCK ; ERRLEVEL : CHAR ; ERRCLASS :
 (* (Ausbaustufe)                                           *)
 (*                                                         *)
 (***********************************************************)
-
 
    var PWORK : SCANF_PTR ;
        PSAVE : SCANF_PTR ;
@@ -833,8 +806,6 @@ function PASSCANE ( var SCB : SCAN_BLOCK ; ERRLEVEL : CHAR ; ERRCLASS :
      PASSCANE := PWORK ;
    end (* PASSCANE *) ;
 
-
-
 procedure PASSCANR ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB
                    : SCAN_BLOCK ; var CH : CHAR ) ;
 
@@ -928,8 +899,6 @@ procedure PASSCANR ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB
        end (* while *)
    end (* PASSCANR *) ;
 
-
-
 local function OPTIONS ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var
                        SCB : SCAN_BLOCK ; COMMENTTYPE : INTEGER ) :
                        BOOLEAN ;
@@ -937,7 +906,6 @@ local function OPTIONS ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var
 (***********************************)
 (*   CCH = COMMENT TERMINATOR CH   *)
 (***********************************)
-
 
    type SET_CHAR = set of CHAR ;
 
@@ -955,7 +923,6 @@ local function OPTIONS ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var
          UP_LETTERS : SET_CHAR =
          [ 'A' .. 'I' , 'J' .. 'R' , 'S' .. 'Z' ] ;
 
-
    procedure WRITEOPT ;
 
       begin (* WRITEOPT *)
@@ -963,7 +930,6 @@ local function OPTIONS ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var
         if OPTIX <= SIZEOF ( SOURCELINE ) then
           SCB . OPTLINE [ OPTIX ] := SCANCH ;
       end (* WRITEOPT *) ;
-
 
    function DECNUM : INTEGER ;
 
@@ -983,7 +949,6 @@ local function OPTIONS ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var
           end (* while *) ;
         DECNUM := NUM
       end (* DECNUM *) ;
-
 
    begin (* OPTIONS *)
      OPTIX := 0 ;
@@ -1110,15 +1075,12 @@ local function OPTIONS ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var
        end (* while *) ;
    end (* OPTIONS *) ;
 
-
-
 local procedure COMMENT ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var
                         SCB : SCAN_BLOCK ; COMMENTTYPE : INTEGER ) ;
 
 (***********************************)
 (*   CCH = COMMENT TERMINATOR CH   *)
 (***********************************)
-
 
    var TERMCH : CHAR ;
        CCH : CHAR ;
@@ -1241,8 +1203,6 @@ local procedure COMMENT ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var
        end (* while *) ;
    end (* COMMENT *) ;
 
-
-
 procedure PASSCANF ( var SCB : SCAN_BLOCK ; WHICHTABLE : CHAR ;
                    ERRCLASS : SCAN_ERRCLASS ; ERRNUM : INTEGER ; ERRMSG
                    : SOURCELINE ; ERRMSGSIZE : INTEGER ) ;
@@ -1259,7 +1219,6 @@ procedure PASSCANF ( var SCB : SCAN_BLOCK ; WHICHTABLE : CHAR ;
 (* ERRMSG und ERRMSGSIZE = der Fehlertext                  *)
 (*                                                         *)
 (***********************************************************)
-
 
    var PFTAB : SCANFT_PTR ;
        C : SCAN_ERRCLASS ;
@@ -1301,8 +1260,6 @@ procedure PASSCANF ( var SCB : SCAN_BLOCK ; WHICHTABLE : CHAR ;
        end (* with *)
    end (* PASSCANF *) ;
 
-
-
 procedure PASSCAN ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB :
                   SCAN_BLOCK ; DO_COMMENT : BOOLEAN ) ;
 
@@ -1312,14 +1269,12 @@ procedure PASSCAN ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB :
 (*                                                         *)
 (***********************************************************)
 
-
    var ALTZUST : INTEGER ;
        ZUST : INTEGER ;
        CH : CHAR ;
        CASE_FOUND : BOOLEAN ;
        PFDUMMY : SCANF_PTR ;
        PFSKIP : SCANF_PTR ;
-
 
    procedure SCANNER2 ( ALTZUST : INTEGER ; var SCB : SCAN_BLOCK ) ;
 
@@ -1421,7 +1376,6 @@ procedure PASSCAN ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB :
 
       end (* SCANNER2 *) ;
 
-
    procedure INIT ( var SCB : SCAN_BLOCK ) ;
 
       const MSG1 = 'symbol not known to source program scanner' ;
@@ -1450,7 +1404,6 @@ procedure PASSCAN ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB :
         PASSCANF ( SCB , 'S' , 'S' , 5 , MSG5 , SIZEOF ( MSG5 ) ) ;
         PASSCANF ( SCB , 'S' , 'S' , 6 , MSG6 , SIZEOF ( MSG6 ) ) ;
       end (* INIT *) ;
-
 
    procedure SCAN0000 ;
 
@@ -1566,7 +1519,6 @@ procedure PASSCAN ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB :
         end (* case *)
       end (* SCAN0000 *) ;
 
-
    procedure SCAN0010 ;
 
       begin (* SCAN0010 *)
@@ -1633,7 +1585,6 @@ procedure PASSCAN ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB :
             CASE_FOUND := FALSE
         end (* case *)
       end (* SCAN0010 *) ;
-
 
    procedure SCAN0020 ;
 
@@ -1723,7 +1674,6 @@ procedure PASSCAN ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB :
             CASE_FOUND := FALSE
         end (* case *)
       end (* SCAN0020 *) ;
-
 
    procedure SCAN0030 ;
 
@@ -1820,7 +1770,6 @@ procedure PASSCAN ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB :
         end (* case *)
       end (* SCAN0030 *) ;
 
-
    procedure SCAN0040 ;
 
       begin (* SCAN0040 *)
@@ -1863,7 +1812,6 @@ procedure PASSCAN ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB :
             CASE_FOUND := FALSE
         end (* case *)
       end (* SCAN0040 *) ;
-
 
    procedure SCAN0060 ;
 
@@ -1949,7 +1897,6 @@ procedure PASSCAN ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB :
         end (* case *)
       end (* SCAN0060 *) ;
 
-
    procedure SCAN0070 ;
 
       begin (* SCAN0070 *)
@@ -1984,7 +1931,6 @@ procedure PASSCAN ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB :
             CASE_FOUND := FALSE
         end (* case *)
       end (* SCAN0070 *) ;
-
 
    procedure SCAN0080 ;
 
@@ -2080,7 +2026,6 @@ procedure PASSCAN ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB :
         end (* case *)
       end (* SCAN0080 *) ;
 
-
    procedure SCAN0090 ;
 
       begin (* SCAN0090 *)
@@ -2127,7 +2072,6 @@ procedure PASSCAN ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB :
             CASE_FOUND := FALSE
         end (* case *)
       end (* SCAN0090 *) ;
-
 
    procedure SCAN0130 ;
 
@@ -2222,7 +2166,6 @@ procedure PASSCAN ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB :
             CASE_FOUND := FALSE
         end (* case *)
       end (* SCAN0130 *) ;
-
 
    procedure SCAN0140 ;
 
@@ -2337,7 +2280,6 @@ procedure PASSCAN ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB :
         end (* case *)
       end (* SCAN0140 *) ;
 
-
    procedure SCAN0150 ;
 
       begin (* SCAN0150 *)
@@ -2370,7 +2312,6 @@ procedure PASSCAN ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB :
             CASE_FOUND := FALSE
         end (* case *)
       end (* SCAN0150 *) ;
-
 
    begin (* PASSCAN *)
      if SCANNER_INIT = 0 then
@@ -2511,8 +2452,6 @@ procedure PASSCAN ( var SCANINP : TEXT ; var SCANOUT : TEXT ; var SCB :
              PFSKIP -> . POS_SKIP := SCB . LINEPOS - SCB . LSYMBOL + 1
            end (* else *) ;
    end (* PASSCAN *) ;
-
-
 
 begin (* HAUPTPROGRAMM *)
   

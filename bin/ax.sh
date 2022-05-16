@@ -1,0 +1,5 @@
+#!/bin/bash
+
+gccmodd oiscach
+gccmodd pcintcmp
+gccprgd pcint pcintcmp oiscach

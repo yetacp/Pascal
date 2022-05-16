@@ -1,20 +1,15 @@
 module $PASUTIL ;
 
-
 type PLATFORM = ( PLATF_UNKNOWN , PLATF_INTEL , PLATF_MAINFRAME ) ;
      CHAR8 = array [ 1 .. 8 ] of CHAR ;
      CHAR10 = array [ 1 .. 10 ] of CHAR ;
      CHAR80 = array [ 1 .. 80 ] of CHAR ;
      CHARPTR = -> CHAR ;
 
-
 const KLEINBUCHST : set of CHAR =
       [ 'a' .. 'i' , 'j' .. 'r' , 's' .. 'z' ] ;
 
-
 static PLATF : PLATFORM ;
-
-
 
 function $PASSYS ( FUNCCODE : INTEGER ; X : VOIDPTR ) : VOIDPTR ;
 
@@ -24,16 +19,11 @@ function $PASSYS ( FUNCCODE : INTEGER ; X : VOIDPTR ) : VOIDPTR ;
 (*  GETMAIN und FREEMAIN                            *)
 (****************************************************)
 
-
    EXTERNAL ;
-
-
 
 procedure CMSX ( CMD : CHARPTR ; var RETCODE : INTEGER ) ;
 
    EXTERNAL ;
-
-
 
 local procedure CHECK_PLATFORM ;
 
@@ -44,15 +34,11 @@ local procedure CHECK_PLATFORM ;
        PLATF := PLATF_MAINFRAME
    end (* CHECK_PLATFORM *) ;
 
-
-
 procedure HALT ;
 
    begin (* HALT *)
      EXIT ( 8 ) ;
    end (* HALT *) ;
-
-
 
 procedure DATETIME ( var DAT : CHAR8 ; var TIM : CHAR8 ) ;
 
@@ -69,8 +55,6 @@ procedure DATETIME ( var DAT : CHAR8 ; var TIM : CHAR8 ) ;
      DAT [ 8 ] := DATX [ 10 ] ;
      PACK ( TIME , 1 , TIM ) ;
    end (* DATETIME *) ;
-
-
 
 procedure DATTIM10 ( var DAT : CHAR10 ; var TIM : CHAR10 ) ;
 
@@ -89,8 +73,6 @@ procedure DATTIM10 ( var DAT : CHAR10 ; var TIM : CHAR10 ) ;
      DAT [ 10 ] := DATX [ 10 ] ;
      TIM := TIME ;
    end (* DATTIM10 *) ;
-
-
 
 procedure TERMIN ( var X : TEXT ) ;
 
@@ -126,8 +108,6 @@ procedure TERMIN ( var X : TEXT ) ;
        end (* else *)
    end (* TERMIN *) ;
 
-
-
 procedure TERMOUT ( var X : TEXT ) ;
 
    var FCB : VOIDPTR ;
@@ -161,8 +141,6 @@ procedure TERMOUT ( var X : TEXT ) ;
          PTERM -> := 'Y'
        end (* else *)
    end (* TERMOUT *) ;
-
-
 
 procedure ASSIGN ( var X : ANYFILE ; FNAME : CHARPTR ; LEN : INTEGER )
                  ;
@@ -202,8 +180,6 @@ procedure ASSIGN ( var X : ANYFILE ; FNAME : CHARPTR ; LEN : INTEGER )
        end (* else *)
    end (* ASSIGN *) ;
 
-
-
 procedure ASSIGNMEM ( var X : ANYFILE ; MEMBNAME : CHARPTR ; LEN :
                     INTEGER ) ;
 
@@ -230,15 +206,12 @@ procedure ASSIGNMEM ( var X : ANYFILE ; MEMBNAME : CHARPTR ; LEN :
        end (* else *)
    end (* ASSIGNMEM *) ;
 
-
-
 procedure CLRSCRN ;
 
 (**************************************)
 (*   LOESCHT DEN BILDSCHIRM MITTELS   *)
 (*   CMS-KOMMANDO CLRSCRN.            *)
 (**************************************)
-
 
    var RC : INTEGER ;
        CMD : array [ 1 .. 80 ] of CHAR ;
@@ -258,15 +231,12 @@ procedure CLRSCRN ;
        end (* else *)
    end (* CLRSCRN *) ;
 
-
-
 procedure MOVEPARM ( X : VOIDPTR ; LEN : INTEGER ) ;
 
 (**************************************)
 (*   uebertraegt parm in angegeb.     *)
 (*   string (ohne blanks)             *)
 (**************************************)
-
 
    var CP : -> CHAR ;
        SX : INTEGER ;
@@ -293,14 +263,11 @@ procedure MOVEPARM ( X : VOIDPTR ; LEN : INTEGER ) ;
          end (* with *) ;
    end (* MOVEPARM *) ;
 
-
-
 function TOUPPER ( CH : CHAR ) : CHAR ;
 
 (******************************************)
 (*   SETZT KLEINBUCHSTABEN IN GROSSE UM   *)
 (******************************************)
-
 
    begin (* TOUPPER *)
      if CH in KLEINBUCHST then
@@ -309,15 +276,12 @@ function TOUPPER ( CH : CHAR ) : CHAR ;
        TOUPPER := CH
    end (* TOUPPER *) ;
 
-
-
 procedure TOUPPERS ( X : VOIDPTR ; LEN : INTEGER ) ;
 
 (******************************************)
 (*   SETZT KLEINBUCHSTABEN IN GROSSE UM   *)
 (*   fuer strings                         *)
 (******************************************)
-
 
    var CP : -> CHAR ;
 
@@ -330,8 +294,6 @@ procedure TOUPPERS ( X : VOIDPTR ; LEN : INTEGER ) ;
        end (* while *)
    end (* TOUPPERS *) ;
 
-
-
 procedure DUMPSTOR ( PVON : VOIDPTR ; PBIS : VOIDPTR ) ;
 
 (*********************************************************)
@@ -339,12 +301,10 @@ procedure DUMPSTOR ( PVON : VOIDPTR ; PBIS : VOIDPTR ) ;
 (*  ausgeben                                             *)
 (*********************************************************)
 
-
    var P1 : VOIDPTR ;
        P2 : VOIDPTR ;
        MOD1 : INTEGER ;
        MOD2 : INTEGER ;
-
 
    procedure DUMPCHAR ( CH : CHAR ) ;
 
@@ -360,7 +320,6 @@ procedure DUMPSTOR ( PVON : VOIDPTR ; PBIS : VOIDPTR ) ;
         else
           WRITE ( '.' )
       end (* DUMPCHAR *) ;
-
 
    procedure DUMPZEILE ( ADR : VOIDPTR ; P1 : VOIDPTR ; P2 : VOIDPTR )
                        ;
@@ -402,7 +361,6 @@ procedure DUMPSTOR ( PVON : VOIDPTR ; PBIS : VOIDPTR ) ;
         WRITELN ( '*' ) ;
       end (* DUMPZEILE *) ;
 
-
    begin (* DUMPSTOR *)
      P1 := PTRADD ( PVON , - 16 ) ;
      MOD1 := PTR2INT ( P1 ) MOD 16 ;
@@ -416,8 +374,6 @@ procedure DUMPSTOR ( PVON : VOIDPTR ; PBIS : VOIDPTR ) ;
          P1 := PTRADD ( P1 , 16 ) ;
        end (* while *) ;
    end (* DUMPSTOR *) ;
-
-
 
 procedure INTTOSTR ( CP : VOIDPTR ; LEN : INTEGER ; VAL : INTEGER ;
                    ZEROES : BOOLEAN ) ;
@@ -473,8 +429,6 @@ procedure INTTOSTR ( CP : VOIDPTR ; LEN : INTEGER ; VAL : INTEGER ;
               ;
    end (* INTTOSTR *) ;
 
-
-
 procedure WRITEPTR_LEN ( var F : TEXT ; CPSTART : VOIDPTR ; LEN :
                        INTEGER ; TRIM_LEFT : BOOLEAN ; TRIM_RIGHT :
                        BOOLEAN ) ;
@@ -513,8 +467,6 @@ procedure WRITEPTR_LEN ( var F : TEXT ; CPSTART : VOIDPTR ; LEN :
          CP := PTRADD ( CP , 1 ) ;
        end (* for *) ;
    end (* WRITEPTR_LEN *) ;
-
-
 
 function IVALSTR ( CP : CHARPTR ; LEN : INTEGER ) : INTEGER ;
 
@@ -569,8 +521,6 @@ function IVALSTR ( CP : CHARPTR ; LEN : INTEGER ) : INTEGER ;
        X := - X ;
      IVALSTR := X ;
    end (* IVALSTR *) ;
-
-
 
 function DVALSTR ( CP : CHARPTR ; LEN : INTEGER ) : REAL ;
 
@@ -647,8 +597,6 @@ function DVALSTR ( CP : CHARPTR ; LEN : INTEGER ) : REAL ;
      DVALSTR := X ;
    end (* DVALSTR *) ;
 
-
-
 procedure READSYMB ( var F : TEXT ; X : VOIDPTR ; LEN : INTEGER ) ;
 
    var CP : CHARPTR ;
@@ -665,8 +613,6 @@ procedure READSYMB ( var F : TEXT ; X : VOIDPTR ; LEN : INTEGER ) ;
          CP := PTRADD ( CP , 1 ) ;
        end (* while *) ;
    end (* READSYMB *) ;
-
-
 
 begin (* HAUPTPROGRAMM *)
   
