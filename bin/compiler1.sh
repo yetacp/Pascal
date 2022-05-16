@@ -10,8 +10,9 @@ env DD_INPUT=$1.pas \
     DD_DBGINFO=$1.dbginfo \
     DD_PRD=pascal.messages \
     DD_TRACEF=*stdout* \
-    bin/pcint pcode=pascal1.pcode \
-    inc=paslibx,passcan \
-    pas=pascal1.pas \
+    bin/pcint \
+    pcode=src/pascal1.pcode \
+    inc=src/runtime,src/scanner \
+    pas=src/pascal1.pas \
     out=pascal1.pcodelis \
     debug=n
