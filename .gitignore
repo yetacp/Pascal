@@ -1,8 +1,8 @@
 !mvsinst\*.obj
-!pas*.pcode
-!pas*.pcode1
-!pas*.pcode2
-!pas*.pcode3
+!bin/*.pcode
+!bin/*.pcode1
+!bin/*.pcode2
+!bin/*.pcode3
 *.bak
 *.dbginfo
 *.exe
@@ -12,7 +12,6 @@
 *.map
 *.o
 *.obj
-*.pcode*
 *.tmp
 *.tracef
 *.xxx
